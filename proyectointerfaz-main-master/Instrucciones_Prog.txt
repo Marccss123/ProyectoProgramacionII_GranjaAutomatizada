@@ -1,0 +1,45 @@
+AUTOMATIZACIÓN DE UNA GRANJA
+Hacer en Java-con una interfaz grafica
+
+
+
+
+
+
+PAQUETE interfaz
+Con la responsabilidad de mostrar los menús al usuario, leer los datos proporcionados por este y llamar a los métodos de negocio correspondientes para procesar la información.
+	*Clase Main
+	Contiene el metodo main(String[] args), que se encarga de mostrar el menú principal con opciones del 1 al 20. No realiza cálculos ni guarda listas, sino que coordina las interacciones del usuario, llamando a los métodos adecuados según las opciones seleccionadas.
+PAQUETE utilitario
+Clases de apoyo reutilizables
+	*Clase Util
+	Contendrá métodos auxiliares como la generación de IDs (PARCELA_1, ASPERSOR_3, etc.), la generación de números aleatorios progresivos de humedad, la validación de entradas del usuario, la obtención de la fecha y hora actuales y la búsqueda de objetos por ID dentro de listas. En esta clase no existe lógica de negocio, únicamente herramientas de apoyo.
+PAQUETE modelo
+Representan los elementos reales de la granja, modelando sus características y datos principales dentro del sistema
+	*Clase Parcela
+	Representa una parcela de terreno
+	Atributos clave: id, metrosCuadrados, Cultivo cultivo, ArrayList<Aspersor> aspersores, ArrayList<SensorHumedad> sensores
+	*Clase Aspersor
+	Representa un aspersor físico
+	Atributos clave: id, boolean conectado, boolean encendido, Parcela parcela, ArrayList<LocalDateTime> historialEncendidos
+	*Clase SensorHumedad
+	Simula lecturas de humedad
+	Atributos clave: id, boolean conectado, Parcela parcela, ArrayList<LecturaHumedad> lecturas
+	*Clase Cultivo
+	Guarda los datos de la planta
+	Atributos clave: nombre, humedadMinima, humedadMaxima, frecuenciaRiegoHoras
+	*Clase LecturaHumedad
+	Registrar historial de lecturas	
+	Atributos clave: fecha, porcentajeHumedad
+PAQUETE negocio
+La lógica del programa
+	*Clase GestorGranja
+	Controla todo el sistema, mantiene las listas principales de parcelas, aspersores en inventario y sensores en inventario, y coordina el funcionamiento de los demás gestores.
+	*Clase GestorParcelas
+	Se encarga de crear parcelas, dividir el terreno en bloques de 50 m², eliminar parcelas, añadir terreno y asignar aspersores y sensores
+	*Clase GestorAspersores
+	Gestiona el inventario de aspersores, permitiendo agregarlos y eliminarlos, asignarlos a parcelas, controlar su encendido y apagado, gestionar su conexión y desconexión, y mostrar el historial de encendidos.
+	*Clase GestorSensores
+	Gestiona el inventario de sensores, permite agregarlos y asignarlos a parcelas, controlar su conexión y desconexión, simular lecturas de humedad y mostrar el historial de lecturas
+	*Clase GestorCultivos
+	Se encarga de crear cultivos, permitir el cambio de cultivo en una parcela y mostrar los cultivos disponibles en el sistema
